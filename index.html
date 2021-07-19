@@ -36,22 +36,11 @@
             <table class="table table-dark table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Rol</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col"></th>
+                        <th class="text-end" scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="contenidoTabla">
-                    <tr>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>
-                            <button class="btn btn-warning">Ver Detalle</button>
-                            <button class="btn btn-warning">Editar</button>
-                            <button class="btn btn-warning">Eliminar</button>
-                        </td>
-                    </tr>
-
                 </tbody>
             </table>
         </section>
@@ -62,25 +51,25 @@
             <div class="modal-dialog">
                 <div class="modal-content bg-dark">
                     <div class="modal-body">
-                        <form>
+                        <form onsubmit="agregarNota(event)">
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label text-white">Titulo</label>
-                                <input type="text" class="form-control bg-secondary" id="recipient-name">
+                                <label for="tituloInput" class="col-form-label text-warning">Titulo</label>
+                                <input required type="text" class="form-control bg-secondary" id="tituloInput">
                             </div>
                             <div class="mb-3">
-                                <textarea class="form-control bg-secondary" id="message-text" rows="10"></textarea>
+                                <textarea required class="form-control bg-secondary" id="contTextArea" rows="10"></textarea>
                             </div>
-                            <select class="form-select bg-secondary" aria-label="Default select example">
-                                <option selected>Seleccion Tipo de Nota</option>
-                                <option value="1">Hacer</option>
-                                <option value="2">Rehacer</option>
-                                <option value="3">Verificar</option>
+                            <label class="col-form-label text-warning">Categoria</label>
+                            <select required class="form-select bg-secondary" id="categoriaSelect">              
+                                <option >Hacer</option>
+                                <option >Rehacer</option>
+                                <option >Verificar</option>
                             </select>
+                            <div class="modal-footer d-flex justify-content-between">
+                                <button class="btn btn-danger text-start" data-bs-dismiss="modal">Cancelar</button>
+                                <button class="btn btn-success" data-bs-dismiss="modal">Crear</button>
+                            </div>
                         </form>
-                    </div>
-                    <div class="modal-footer d-flex justify-content-between">
-                        <button type="button" class="btn btn-danger text-start" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-success">Crear</button>
                     </div>
                 </div>
             </div>
