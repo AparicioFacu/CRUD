@@ -9,8 +9,9 @@ const tituloEditarInput = document.getElementById('tituloEditarInput');
 const contEditarTextArea = document.getElementById('contEditarTextArea');
 const editarNotaBody = document.getElementById('editarNotaBody');
 const categoriaEditarSelect = document.getElementById('categoriaEditarSelect');
-
-//Agrega las Notas en LocalStorage
+//Elementos del formaulario de Busqueda
+const busquedaInput = document.getElementById('busquedaInput');
+/**Agrega las Notas en LocalStorage */
 let notas = JSON.parse(localStorage.getItem('notas')) || [];
 
 function ID() {
@@ -87,7 +88,7 @@ function detalleNota(id) {
         `;
     detalleNotaBody.innerHTML = contenido;
 }
-
+/** auxiliar para ID de la nota*/
 let notaID = '';
 
 function cargarEditarNota(id) {
@@ -122,6 +123,19 @@ function editarNota(event) {
     const notaActualizada = notas.map(actualizarNota);
     notas = notaActualizada;
     actualizarLocalStorage();
+    listarNotas();
+}
+
+
+
+function buscarNota(event) {
+    event.preventDefault();
+
+    function filtrarNota(nota) {
+        return nota.titulo.toLowerCase().includes(busquedaInput.value.toLowerCase());
+    }
+    const notaFiltrada = notas.filter(filtrarNota);
+    notas = notaFiltrada;
     listarNotas();
 }
 listarNotas();

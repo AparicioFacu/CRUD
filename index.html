@@ -18,11 +18,13 @@
             <h1 class="text-center p-5 text-white">Notas Personales</h1>
         </header>
         <section class="container bg-dark py-3">
-            <div class="row buscar">
-                <div class="col-12">
-                    <input type="text" class="form-control" placeholder="Buscar Nota">
+            <form onkeyup="buscarNota(event)">
+                <div class="row buscar">
+                    <div class="col-12">
+                        <input type="search" id="busquedaInput" class="form-control" placeholder="Buscar Nota">
+                    </div>
                 </div>
-            </div>
+            </form>
             <form class="row p-2 bg-secondary rounded-3">
                 <div class="col-6">
                     <label class="text-white texto px-4">MIS NOTAS</label>
