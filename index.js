@@ -1,8 +1,15 @@
+//Elementos del formulario de alta
 const tituloInput = document.getElementById('tituloInput');
 const contTextArea = document.getElementById('contTextArea');
 const contenidoTabla = document.getElementById('contenidoTabla');
 const categoriaSelect = document.getElementById('categoriaSelect');
 const detalleNotaBody = document.getElementById('detalleNotaBody');
+//Elementos del formulario de Modificar
+const tituloEditarInput = document.getElementById('tituloEditarInput');
+const contEditarTextArea = document.getElementById('contEditarTextArea');
+const editarNotaBody = document.getElementById('editarNotaBody');
+const categoriaEditarSelect = document.getElementById('categoriaEditarSelect');
+
 //Agrega las Notas en LocalStorage
 let notas = JSON.parse(localStorage.getItem('notas')) || [];
 
@@ -43,7 +50,7 @@ function listarNotas() {
             </td>
             <td class="text-end">               
                 <button onclick="detalleNota('${nota.id}')" type="button" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#detalleModal" data-bs-whatever="@mdo">Ver Detalle</button>
-                <button class="btn btn-warning">Editar</button>
+                <button type="button" onclick="cargarEditarNota('${nota.id}')" class="btn btn-warning p-2" data-bs-toggle="modal" data-bs-target="#editarModal" data-bs-whatever="@mdo">Editar</button>     
                 <button onclick="eliminarNota('${nota.id}')" class="btn btn-danger">Eliminar</button>
             </td>
         </tr>
@@ -53,6 +60,8 @@ function listarNotas() {
     const contenido = notas.map(crearFilas);
     contenidoTabla.innerHTML = contenido.join('');
 }
+
+
 
 function eliminarNota(id) {
     function notasFilter(nota) {
@@ -77,5 +86,42 @@ function detalleNota(id) {
             <p>Categoria:${notaEncontrada.categoria} </p>
         `;
     detalleNotaBody.innerHTML = contenido;
+}
+
+let notaID = '';
+
+function cargarEditarNota(id) {
+    function notasFind(nota) {
+        return nota.id === id;
+    };
+    const editarNota = notas.find(notasFind);
+    tituloEditarInput.value = editarNota.titulo;
+    contEditarTextArea.value = editarNota.contenido;
+    categoriaEditarSelect.value = editarNota.categoria;
+    notaID = id;
+}
+
+function editarNota(event) {
+    event.preventDefault();
+    const tituloEditado = tituloEditarInput.value;
+    const contenidoEditado = contEditarTextArea.value;
+    const categoriaEditado = categoriaEditarSelect.value;
+    const notaEditada = {
+        titulo: tituloEditado,
+        contenido: contenidoEditado,
+        categoria: categoriaEditado
+    };
+
+    function actualizarNota(nota) {
+        if (nota.id === notaID) {
+            return {...nota, ...notaEditada };
+        } else {
+            return nota;
+        }
+    }
+    const notaActualizada = notas.map(actualizarNota);
+    notas = notaActualizada;
+    actualizarLocalStorage();
+    listarNotas();
 }
 listarNotas();
