@@ -50,9 +50,9 @@ function listarNotas() {
                 ${nota.categoria}
             </td>
             <td class="text-end">               
-                <button onclick="detalleNota('${nota.id}')" type="button" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#detalleModal" data-bs-whatever="@mdo">Ver Detalle</button>
-                <button type="button" onclick="cargarEditarNota('${nota.id}')" class="btn btn-warning p-2" data-bs-toggle="modal" data-bs-target="#editarModal" data-bs-whatever="@mdo">Editar</button>     
-                <button onclick="eliminarNota('${nota.id}')" class="btn btn-danger">Eliminar</button>
+                <button onclick="detalleNota('${nota.id}')" type="button" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#detalleModal" data-bs-whatever="@mdo"><i class="fas fa-info-circle"></i>  Ver Detalle</button>
+                <button type="button" onclick="cargarEditarNota('${nota.id}')" class="btn btn-warning p-2" data-bs-toggle="modal" data-bs-target="#editarModal" data-bs-whatever="@mdo"><i class="fas fa-edit"></i> Editar</button>     
+                <button onclick="eliminarNota('${nota.id}')" class="btn btn-danger"><i class="far fa-trash-alt"></i> Eliminar</button>
             </td>
         </tr>
         `;

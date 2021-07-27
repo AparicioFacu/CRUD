@@ -1,11 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 body {
+    font-family: 'Roboto', sans-serif;
     background-color: #212529;
-    /* background-image: url(./img/IMG_4291.jpg); */
-    background-position: center center;
-    /* background-repeat: no-repeat; */
-    -webkit-background-size: cover;
-    background-size: cover;
-    margin-top: 0px!important;
 }
 
 .buscar {
